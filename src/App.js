@@ -8,7 +8,6 @@ function App() {
       <Navigation />
       <Logo />
       <ImageLinkForm />
-
       {/* 
       
       <FaceRecognition /> */}
