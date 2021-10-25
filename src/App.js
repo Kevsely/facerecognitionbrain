@@ -7,8 +7,10 @@ function App() {
     <div className="App">
       <Navigation />
       <Logo />
-      {/* 
       <ImageLinkForm />
+
+      {/* 
+      
       <FaceRecognition /> */}
     </div>
   );
