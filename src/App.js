@@ -4,15 +4,11 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-
-      
+    <div className="App">      
       <Navigation />
       <Logo />
-      <ImageLinkForm />
-
       {/* 
-      
+      <ImageLinkForm />
       <FaceRecognition /> */}
     </div>
   );
