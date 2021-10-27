@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
@@ -17,18 +18,31 @@ const particlesOptions = {
   }
 }
 
-function App() {
-  return (
-    <div className="App">
-      <Particles className = "particle" params={particlesOptions} />
-      <Navigation />
-      <Logo />
-      <Rank />
-      <ImageLinkForm />
-      {/*       
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      input : ""
+    }
+  }
+
+  onInputChanges = (event) => {
+    console.log(event.target.value);
+  }
+
+  render() {
+    return (
+      < div className="App" >
+        <Particles className="particle" params={particlesOptions} />
+        <Navigation />
+        <Logo />
+        <Rank />
+        <ImageLinkForm onInputChanges={this.onInputChanges}/>
+        {/*       
       <FaceRecognition /> */}
-    </div>
-  );
+      </div >
+    )
+  }
 }
 
 export default App;
