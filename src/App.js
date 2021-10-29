@@ -55,8 +55,18 @@ function calculateBoxesParams(data) {
   console.log(rawData);  
 
   //Grabbing box data
-  const {top_row, bottom_row, left_col, right_col} = JSON.parse(data, null, 2).outputs[0].data.regions[0].region_info.bounding_box;
+  const boxData = {
+    top: (rawData.top_row*100).toString() + '%', 
+    bottom: ((1 - rawData.bottom_row)*100).toString() + '%', 
+    left: (rawData.left_col*100).toString() + '%', 
+    right: ((1 - rawData.right_col)*100).toString() + '%'
+  };
 
+  console.log(boxData);
+
+  return boxData;
+
+  /*
   //Image Dimension
   const image = document.getElementById('image');
   const imageDimension = {
@@ -67,16 +77,16 @@ function calculateBoxesParams(data) {
   //Converting box data which are in % to px
   const dataInPixel = {
     top: imageDimension.height * top_row, 
-    bottom: imageDimension.height * bottom_row,
-    //bottom: imageDimension.height - (imageDimension.height * bottom_row),
+    //bottom: imageDimension.height * bottom_row,
+    bottom: imageDimension.height - (imageDimension.height * bottom_row),
     left: imageDimension.width * left_col,
-    right: imageDimension.width * right_col,
-    //right: imageDimension.width - (imageDimension.width * right_col),
+    //right: imageDimension.width * right_col,
+    right: imageDimension.width - (imageDimension.width * right_col),
   }
 
   console.log(dataInPixel);
 
-  return dataInPixel;
+  return dataInPixel; */
 }
 
 class App extends Component {
