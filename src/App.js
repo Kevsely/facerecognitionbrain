@@ -63,30 +63,7 @@ function calculateBoxesParams(data) {
   };
 
   console.log(boxData);
-
   return boxData;
-
-  /*
-  //Image Dimension
-  const image = document.getElementById('image');
-  const imageDimension = {
-    width : Number(image.width),
-    height : Number(image.height),
-  }
-
-  //Converting box data which are in % to px
-  const dataInPixel = {
-    top: imageDimension.height * top_row, 
-    //bottom: imageDimension.height * bottom_row,
-    bottom: imageDimension.height - (imageDimension.height * bottom_row),
-    left: imageDimension.width * left_col,
-    //right: imageDimension.width * right_col,
-    right: imageDimension.width - (imageDimension.width * right_col),
-  }
-
-  console.log(dataInPixel);
-
-  return dataInPixel; */
 }
 
 class App extends Component {
