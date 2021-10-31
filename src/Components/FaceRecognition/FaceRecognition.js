@@ -12,6 +12,7 @@ const FaceRecognition = ({imageUrl, box}) => {
             
     );
 }
+//Sample images for test
 //https://samples.clarifai.com/metro-north.jpg
 //https://www.thelist.com/img/gallery/why-we-find-smiles-so-attractive/are-smiles-truly-attractive-1546622861.jpg
 //https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_07/2233721/171120-smile-stock-njs-333p.jpg
