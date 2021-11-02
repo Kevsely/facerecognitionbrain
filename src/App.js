@@ -56,10 +56,10 @@ function calculateBoxesParams(data) {
 
   //Grabbing box data
   const boxData = {
-    top: (rawData.top_row*100).toString() + '%', 
-    bottom: ((1 - rawData.bottom_row)*100).toString() + '%', 
-    left: (rawData.left_col*100).toString() + '%', 
-    right: ((1 - rawData.right_col)*100).toString() + '%'
+    top: (rawData.top_row * 100).toString() + '%',
+    bottom: ((1 - rawData.bottom_row) * 100).toString() + '%',
+    left: (rawData.left_col * 100).toString() + '%',
+    right: ((1 - rawData.right_col) * 100).toString() + '%'
   };
 
   return boxData;
@@ -72,12 +72,29 @@ class App extends Component {
       input: "",
       formUrl: "",
       box: {},
-      route: 'signin', 
-      isSignedIn: false
+      route: 'signin',
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: '',
+      }
     }
   }
 
-  setFaceBox = (box) => {this.setState({box})}
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined,
+    }})
+  }
+
+  setFaceBox = (box) => { this.setState({ box }) }
 
   onInputChanges = (event) => {
     this.setState({ input: event.target.value });
@@ -90,26 +107,26 @@ class App extends Component {
       .then(response => response.text())
       .then(result => calculateBoxesParams(result))
       .then(box => this.setFaceBox(box))
-      // .catch(error => console.log('error', error));
+    // .catch(error => console.log('error', error));
   }
 
   onRouteChange = (route) => {
-    if(route === 'signin' || route === 'register') {
-      this.setState({isSignedIn: false})
+    if (route === 'signin' || route === 'register') {
+      this.setState({ isSignedIn: false })
     } else if (route === 'home') {
-      this.setState({isSignedIn: true})
+      this.setState({ isSignedIn: true })
     }
-    this.setState({route: route});
+    this.setState({ route: route });
   }
 
   render() {
-    const {formUrl, box, route, isSignedIn} = this.state;
+    const { formUrl, box, route, isSignedIn } = this.state;
     return (
       < div className="App" >
         <Particles className="particle" params={particlesOptions} />
-        <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
-        {route === 'home' 
-        ? <div>
+        <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} />
+        {route === 'home'
+          ? <div>
 
             <Logo />
             <Rank />
@@ -118,13 +135,13 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
             <FaceRecognition box={box} imageUrl={formUrl} />
-        </div>
-        : (route === 'signin' 
-          ? <Signin onRouteChange={this.onRouteChange}/>
-          : <Register onRouteChange={this.onRouteChange}/>
-        )
-        
-          }
+          </div>
+          : (route === 'signin'
+            ? <Signin onRouteChange={this.onRouteChange} />
+            : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
+          )
+
+        }
       </div >
     )
   }
