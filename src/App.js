@@ -108,6 +108,18 @@ class App extends Component {
       .then(result => calculateBoxesParams(result))
       .then(box => this.setFaceBox(box))
     // .catch(error => console.log('error', error));
+
+    fetch('http://localhost:3001/image', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.state.user.id
+      })
+    })
+    .then(response => response.json())
+    .then(count => {
+      this.setState(Object.assign(this.state.user, {entries: count}))
+    })
   }
 
   onRouteChange = (route) => {
