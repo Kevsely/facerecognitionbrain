@@ -5,7 +5,7 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Signin from './Components/Signin/Signin';
 import Register from './Components/Register/Register';
-import Rank from './Components/Rank/Rank.js'
+import Rank from './Components/Rank/Rank'
 import Particles from 'react-particles-js';
 import './App.css';
 
@@ -132,16 +132,15 @@ class App extends Component {
   }
 
   render() {
-    const { formUrl, box, route, isSignedIn } = this.state;
+    const { formUrl, box, route, isSignedIn, user } = this.state;
     return (
       < div className="App" >
         <Particles className="particle" params={particlesOptions} />
         <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} />
-        {route === 'home'
-          ? <div>
-
+        {route === 'home' ? 
+          <div>
             <Logo />
-            <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+            <Rank name={user.name} entries={user.entries}/>
             <ImageLinkForm
               onInputChanges={this.onInputChanges}
               onButtonSubmit={this.onButtonSubmit}
