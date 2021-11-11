@@ -111,7 +111,7 @@ class App extends Component {
       .then(box => this.setFaceBox(box))
     // .catch(error => console.log('error', error));
 
-    fetch('http://localhost:3001/image', {
+    fetch('https://damp-fjord-39973.herokuapp.com/image', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
