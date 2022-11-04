@@ -6,7 +6,7 @@ import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Signin from './Components/Signin/Signin';
 import Register from './Components/Register/Register';
 import Rank from './Components/Rank/Rank'
-import Particles from 'react-particles-js';
+import Particles from 'react-tsparticles';
 import './App.css';
 
 const particlesOptions = {
