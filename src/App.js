@@ -183,7 +183,7 @@ class App extends Component {
       .then(box => this.setFaceBox(box))
     // .catch(error => console.log('error', error));
 
-    fetch('https://damp-fjord-39973.herokuapp.com/image', {
+    fetch('https://smartbrain-api-kevsely.onrender.com/image', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

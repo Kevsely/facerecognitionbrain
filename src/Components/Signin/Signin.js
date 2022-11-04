@@ -18,7 +18,7 @@ class Signin extends Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('https://damp-fjord-39973.herokuapp.com/signin', {
+        fetch('https://smartbrain-api-kevsely.onrender.com/signin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
